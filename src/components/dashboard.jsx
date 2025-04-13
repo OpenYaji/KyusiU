@@ -3,6 +3,15 @@
 import { useState, useEffect } from "react"
 import { Book, Calendar, Bell, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import Welcome from "/src/assets/about.png";
+import Announce1 from "/src/assets/announce1.jpg";
+import Announce2 from "/src/assets/announcement5.jpg";
+import Event1 from "/src/assets/event1.jpg";
+import Event2 from "/src/assets/event3.jpg";
+import News1 from "/src/assets/news5.jpg";
+import News2 from "/src/assets/news2.jpg";
+import News3 from "/src/assets/slider1.jpeg";
+
 
 export default function Dashboard() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -39,7 +48,7 @@ export default function Dashboard() {
             </div>
             <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 animate-float flex items-center justify-center">
               <img
-                src="./src/assets/profile.png"
+                src={Welcome}
                 alt="Welcome"
                 className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105"
               />
@@ -101,7 +110,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/announce1.jpg"
+                  src={Announce1}
                   alt="QCUCAT"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -116,7 +125,7 @@ export default function Dashboard() {
 
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/announcement5.jpg"
+                  src={Announce2}
                   alt="Web Design"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -144,7 +153,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/event1.jpg"
+                  src={Event1}
                   alt="Campus Event"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -159,7 +168,7 @@ export default function Dashboard() {
 
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/event3.jpg"
+                  src={Event2}
                   alt="Workshop"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -188,21 +197,21 @@ export default function Dashboard() {
               >
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/news5.jpg"
+                    src={News1}
                     alt="News 1"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/news2.jpg"
+                    src={News2}
                     alt="News 2"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/slider1.jpeg"
+                    src={News3}
                     alt="News 3"
                     className="w-full h-full object-cover"
                   />

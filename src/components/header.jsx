@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Bell, Moon, Sun, Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import profileImage from "@/assets/profilepic.jpg";
+import Picture from "/src/assets/about.png";
 
 export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
   const [currentDate, setCurrentDate] = useState("")
@@ -80,7 +80,7 @@ export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
           <DropdownMenuTrigger>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
               <img
-                src={profileImage}
+                src={Picture}
                 alt="Profile"
                 className="h-8 w-8 rounded-full object-cover"
               />
