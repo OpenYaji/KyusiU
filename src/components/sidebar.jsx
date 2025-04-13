@@ -10,7 +10,7 @@ import {
   ClipboardCheck,
   Clock,
   Settings,
-  HeadphonesIcon,
+  MessageCircleQuestion,
   ChevronDown,
   Menu,
   X,
@@ -25,7 +25,15 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
   }
 
   const handleNavClick = (section) => {
+    // Only change the active section without toggling the dropdown
     setActiveSection(section)
+  }
+  
+  // Function to handle submenu item clicks
+  const handleSubmenuClick = (section) => {
+    setActiveSection(section)
+    // Close the dropdown when clicking on a submenu item
+    setOpenDropdown(null)
   }
 
   useEffect(() => {
@@ -53,7 +61,7 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
           <div className={`flex items-center ${!isMobile && collapsed ? "justify-center w-full" : ""}`}>
           <img src={Pic} alt="Logo" className="h-10 w-10 rounded-full object-cover" />
             <span className={`ml-3 text-white font-semibold ${!isMobile && collapsed ? "hidden" : "block"}`}>
-              QCU Portal
+              QC University <br></br>Student Portal
             </span>
           </div>
           {isMobile && (
@@ -74,25 +82,25 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
             >
               <Menu size={20} />
               <span className="sr-only">Toggle Sidebar</span>
-              <span className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Collapse Menu
-              </span>
+              </div>
             </button>
           )}
         </div>
         {!isMobile && collapsed && (
-          <div className="relative group">
+          <div className="relative">
             <button
               onClick={toggleSidebar}
-              className="text-white hover:bg-blue-800 dark:hover:bg-gray-700 p-2 rounded-lg mx-auto mb-2 flex justify-center"
+              className="text-white hover:bg-blue-800 dark:hover:bg-gray-700 p-2 rounded-lg mx-auto mb-2 flex justify-center relative group"
               aria-label="Toggle Sidebar"
             >
               <Menu size={20} />
               <span className="sr-only">Toggle Sidebar</span>
+              <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
+                Expand Menu
+              </div>
             </button>
-            <span className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
-              Expand Menu
-            </span>
           </div>
         )}
       </div>
@@ -111,9 +119,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               {(isMobile || !collapsed) && <span className="ml-3">Dashboard</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Dashboard
-              </span>
+              </div>
             )}
           </li>
 
@@ -131,7 +139,10 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               </button>
               {(isMobile || !collapsed) && (
                 <button
-                  onClick={() => toggleDropdown("grades")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDropdown("grades");
+                  }}
                   className="p-2 text-white rounded-lg hover:bg-blue-800 dark:hover:bg-gray-700"
                 >
                   <ChevronDown
@@ -144,9 +155,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               )}
             </div>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Grades
-              </span>
+              </div>
             )}
 
             {/* Dropdown Menu */}
@@ -155,23 +166,11 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
                 !isMobile && collapsed
                   ? "absolute left-full top-0 ml-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                   : "mt-2 ml-6 space-y-1"
-              } ${openDropdown === "grades" || (!isMobile && collapsed) ? "block" : "hidden"}`}
-              style={{
-                display:
-                  !isMobile &&
-                  collapsed &&
-                  activeSection !== "grades" &&
-                  activeSection !== "currentGrades" &&
-                  activeSection !== "pastGrades"
-                    ? "none"
-                    : openDropdown === "grades" || (!isMobile && collapsed)
-                      ? "block"
-                      : "none",
-              }}
+              } ${openDropdown === "grades" ? "block" : "hidden"}`}
             >
               <li>
                 <button
-                  onClick={() => handleNavClick("currentGrades")}
+                  onClick={() => handleSubmenuClick("currentGrades")}
                   className={`flex items-center w-full p-2 ${!isMobile && collapsed ? "text-gray-800 dark:text-white" : "text-white"} rounded-lg hover:bg-blue-800 dark:hover:bg-gray-700 ${
                     activeSection === "currentGrades" ? "bg-blue-800 dark:bg-gray-700 text-white" : ""
                   }`}
@@ -182,7 +181,7 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               </li>
               <li>
                 <button
-                  onClick={() => handleNavClick("pastGrades")}
+                  onClick={() => handleSubmenuClick("pastGrades")}
                   className={`flex items-center w-full p-2 ${!isMobile && collapsed ? "text-gray-800 dark:text-white" : "text-white"} rounded-lg hover:bg-blue-800 dark:hover:bg-gray-700 ${
                     activeSection === "pastGrades" ? "bg-blue-800 dark:bg-gray-700 text-white" : ""
                   }`}
@@ -206,9 +205,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               {(isMobile || !collapsed) && <span className="ml-3">Curriculum</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Curriculum
-              </span>
+              </div>
             )}
           </li>
 
@@ -224,9 +223,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               {(isMobile || !collapsed) && <span className="ml-3">Clearance</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Clearance
-              </span>
+              </div>
             )}
           </li>
 
@@ -242,9 +241,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               {(isMobile || !collapsed) && <span className="ml-3">Class Schedule</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Class Schedule
-              </span>
+              </div>
             )}
           </li>
 
@@ -260,9 +259,9 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
               {(isMobile || !collapsed) && <span className="ml-3">Settings</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Settings
-              </span>
+              </div>
             )}
           </li>
         </ul>
@@ -276,13 +275,13 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
                 activeSection === "support" ? "bg-blue-800 dark:bg-gray-700" : ""
               } ${!isMobile && collapsed ? "justify-center" : ""}`}
             >
-              <HeadphonesIcon size={20} />
+              <MessageCircleQuestion size={20} />
               {(isMobile || !collapsed) && <span className="ml-3">Support</span>}
             </button>
             {!isMobile && collapsed && (
-              <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md z-50">
+              <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md z-50">
                 Support
-              </span>
+              </div>
             )}
           </li>
         </ul>

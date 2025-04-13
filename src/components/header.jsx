@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Bell, Moon, Sun, Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import Picture from "/src/assets/about.png";
+import Picture from "/src/assets/profilepic.jpg";
 
 export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
   const [currentDate, setCurrentDate] = useState("")
@@ -77,18 +77,35 @@ export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
         <span className="hidden md:inline text-sm font-medium text-gray-700 dark:text-gray-300">Calipes, John Rey</span>
 
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+          <DropdownMenuTrigger asChild>
+            <div className="cursor-pointer relative h-8 w-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-colors">
               <img
                 src={Picture}
                 alt="Profile"
-                className="h-8 w-8 rounded-full object-cover"
+                className="h-full w-full object-cover"
               />
-            </Button>
+            </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>Account</DropdownMenuItem>
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="w-48">
+            <div className="flex items-center gap-2 p-2 border-b border-gray-100 dark:border-gray-700">
+              <div className="h-10 w-10 rounded-full overflow-hidden">
+                <img
+                  src={Picture}
+                  alt="Profile"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <p className="text-sm font-medium">John Rey Calipes</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Student</p>
+              </div>
+            </div>
+            <DropdownMenuItem className="cursor-pointer">
+              <span>My Account</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer text-red-500 dark:text-red-400 focus:text-red-500 dark:focus:text-red-400">
+              <span>Logout</span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

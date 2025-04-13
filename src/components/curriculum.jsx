@@ -35,6 +35,43 @@ const curriculumData = {
     { code: "NET102", title: "Networking 2", units: 3, prereq: "NET101, PT101" },
     { code: "PE 3", title: "Individual and Dual Sports", units: 2, prereq: "PE 1" },
   ],
+  "2nd-2nd": [
+        { code: "SOCSCI 1", title: "Understanding the Self", units: 3, prereq: "None" },
+        { code: "SOCSCI 2", title: "Readings in Philippine History", units: 3, prereq: "None" },
+        { code: "HCI101", title: "Introduction to Human Computer Interaction", units: 3, prereq: "None" },
+        { code: "SE101", title: "Software Engineering", units: 3, prereq: "CC105, PF101, IS104" },
+        { code: "IPT101", title: "Integrative Programming and Technologies 1", units: 3, prereq: "PT101, PF101" },
+        { code: "IM101", title: "Advanced Database Systems", units: 3, prereq: "CC105, PF101, IS104" },
+        { code: "PE 4", title: "Team Sports", units: 2, prereq: "PE 1" }
+    ],
+    "3rd-1st": [
+        { code: "SOCSCI 3", title: "The Contemporary World", units: 3, prereq: "None" },
+        { code: "RIZAL", title: "The Life and Works of Rizal", units: 3, prereq: "None" },
+        { code: "MS101", title: "Discrete Mathematics", units: 3, prereq: "3rd Year Standing, CC104, PF101" },
+        { code: "SPI101", title: "Social Professional Issues 1", units: 3, prereq: "3rd Year Standing, SE101" },
+        { code: "AR101", title: "Architecture and Organization", units: 3, prereq: "3rd Year Standing, CC103" },
+        { code: "IPT102", title: "Integrative Programming and Technologies 2 (Electives)", units: 3, prereq: "3rd Year Standing, IPT101" },
+        { code: "SIA101", title: "Systems Integration and Architecture 1", units: 3, prereq: "3rd Year Standing, IPT101" }
+    ],
+    "3rd-2nd": [
+        { code: "HUM 2", title: "Ethics", units: 3, prereq: "None" },
+        { code: "AL101", title: "Algorithms and Complexity", units: 3, prereq: "MS101" },
+        { code: "MS102", title: "Quantitative Methods", units: 3, prereq: "3rd Year Standing, MS101" },
+        { code: "CC106", title: "Application Development and Emerging Technologies", units: 3, prereq: "3rd Year Standing, SE101" },
+        { code: "IAS101", title: "Fundamental of Information Assurance and Security 1", units: 3, prereq: "3rd Year Standing, SIA101" },
+        { code: "SIA102", title: "Systems Integration and Architecture 2 (Electives)", units: 3, prereq: "3rd Year Standing, SIA101" }
+    ],
+    "4th-1st": [
+        { code: "CAP101*", title: "Capstone Project and Research 1", units: 3, prereq: "4th Year Standing, IAS101, MS102" },
+        { code: "PRC101*", title: "Practicum 1", units: 3, prereq: "4th Year Standing, MS102, IAS101, CC106" },
+        { code: "AL102", title: "Automata Theory and Formal Language", units: 3, prereq: "AL101" },
+        { code: "IAS102", title: "Information Assurance and Security 2", units: 3, prereq: "IAS101" }
+    ],
+    "4th-2nd": [
+        { code: "CAP102", title: "Capstone Project and Research 2", units: 3, prereq: "CAP101" },
+        { code: "PRC102", title: "Practicum 2", units: 3, prereq: "PRC101" },
+        { code: "SAM101", title: "Systems Administration and Maintenance", units: 3, prereq: "IAS102" }
+    ]
 }
 
 export default function Curriculum() {
