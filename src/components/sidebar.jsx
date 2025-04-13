@@ -49,7 +49,7 @@ export default function Sidebar({ activeSection, setActiveSection, collapsed, vi
       <div className="flex flex-col border-b border-blue-800 dark:border-gray-700">
         <div className={`flex items-center p-4 ${!isMobile && collapsed ? "justify-center" : "justify-between"}`}>
           <div className={`flex items-center ${!isMobile && collapsed ? "justify-center w-full" : ""}`}>
-            <img src="./src/assets/img/about.png" alt="Logo" className="h-10 w-10 rounded-full object-cover" />
+            <img src="./src/assets/about.png" alt="Logo" className="h-10 w-10 rounded-full object-cover" />
             <span className={`ml-3 text-white font-semibold ${!isMobile && collapsed ? "hidden" : "block"}`}>
               QCU Portal
             </span>

@@ -39,7 +39,7 @@ export default function Dashboard() {
             </div>
             <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 animate-float flex items-center justify-center">
               <img
-                src="./src/assets/img/profile.png"
+                src="./src/assets/profile.png"
                 alt="Welcome"
                 className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105"
               />
@@ -101,7 +101,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/img/announce1.jpg"
+                  src="./src/assets/announce1.jpg"
                   alt="QCUCAT"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -116,7 +116,7 @@ export default function Dashboard() {
 
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/img/announcement5.jpg"
+                  src="./src/assets/announcement5.jpg"
                   alt="Web Design"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -144,7 +144,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/img/event1.jpg"
+                  src="./src/assets/event1.jpg"
                   alt="Campus Event"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -159,7 +159,7 @@ export default function Dashboard() {
 
               <div className="relative overflow-hidden rounded-lg group h-64">
                 <img
-                  src="./src/assets/img/event3.jpg"
+                  src="./src/assets/event3.jpg"
                   alt="Workshop"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -188,21 +188,21 @@ export default function Dashboard() {
               >
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/img/news5.jpg"
+                    src="./src/assets/news5.jpg"
                     alt="News 1"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/img/news2.jpg"
+                    src="./src/assets/news2.jpg"
                     alt="News 2"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="min-w-full h-full">
                   <img
-                    src="./src/assets/img/slider1.jpeg"
+                    src="./src/assets/slider1.jpeg"
                     alt="News 3"
                     className="w-full h-full object-cover"
                   />
