@@ -16,7 +16,7 @@ const currentGradesData = [
     midterm: 2.25,
     finals: 2.5,
     finalGrade: 2.38,
-    type: "general",
+    type: "Minor",
     instructor: "Prof. Randy",
   },
   {
@@ -26,7 +26,7 @@ const currentGradesData = [
     midterm: 1.75,
     finals: 2.0,
     finalGrade: 1.88,
-    type: "general",
+    type: "Minor",
     instructor: "Prof. Palmiano",
   },
   {
@@ -36,7 +36,7 @@ const currentGradesData = [
     midterm: 1.5,
     finals: 1.75,
     finalGrade: 1.63,
-    type: "major",
+    type: "Major",
     instructor: "Prof. Tanjente",
   },
   {
@@ -46,7 +46,7 @@ const currentGradesData = [
     midterm: 2.5,
     finals: 2.25,
     finalGrade: 2.38,
-    type: "major",
+    type: "Major",
     instructor: "Prof. Distor",
   },
   {
@@ -56,7 +56,7 @@ const currentGradesData = [
     midterm: 1.25,
     finals: 1.5,
     finalGrade: 1.38,
-    type: "major",
+    type: "Major",
     instructor: "Prof. Soriano",
   },
   {
@@ -66,7 +66,7 @@ const currentGradesData = [
     midterm: 2.0,
     finals: 2.25,
     finalGrade: 2.13,
-    type: "major",
+    type: "Major",
     instructor: "Prof. Santos",
   },
   {
@@ -83,7 +83,7 @@ const currentGradesData = [
 
 export default function CurrentGrades() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [filter, setFilter] = useState("all")
+  const [filter, setFilter] = useState("All")
 
   // Calculate remarks based on final grade
   const getRemarks = (grade) => {
@@ -107,7 +107,7 @@ export default function CurrentGrades() {
       grade.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
       grade.instructor.toLowerCase().includes(searchTerm.toLowerCase())
 
-    const matchesFilter = filter === "all" || grade.type === filter
+    const matchesFilter = filter === "All" || grade.type === filter
 
     return matchesSearch && matchesFilter
   })
@@ -138,10 +138,9 @@ export default function CurrentGrades() {
               <SelectValue placeholder="Filter subjects" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Subjects</SelectItem>
-              <SelectItem value="major">Major Subjects</SelectItem>
-              <SelectItem value="general">General Subjects</SelectItem>
-              <SelectItem value="minor">Minor Subjects</SelectItem>
+              <SelectItem value="All">All Subjects</SelectItem>
+              <SelectItem value="Major">Major Subjects</SelectItem>
+              <SelectItem value="Minor">Minor Subjects</SelectItem>
             </SelectContent>
           </Select>
           <Button className="flex items-center gap-2">

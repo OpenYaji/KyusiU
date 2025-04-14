@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import Picture from "/src/assets/profilepic.jpg";
 
-export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
+export default function Header({ toggleDarkMode, darkMode, toggleSidebar, onLogout }) {
   const [currentDate, setCurrentDate] = useState("")
   const [currentTime, setCurrentTime] = useState("")
 
@@ -103,7 +103,8 @@ export default function Header({ toggleDarkMode, darkMode, toggleSidebar }) {
             <DropdownMenuItem className="cursor-pointer">
               <span>My Account</span>
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer text-red-500 dark:text-red-400 focus:text-red-500 dark:focus:text-red-400">
+            <DropdownMenuItem className="cursor-pointer text-red-500 dark:text-red-400 focus:text-red-500 dark:focus:text-red-400"
+            onClick={onLogout}>
               <span>Logout</span>
             </DropdownMenuItem>
           </DropdownMenuContent>

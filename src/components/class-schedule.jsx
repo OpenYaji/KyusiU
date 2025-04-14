@@ -20,6 +20,7 @@ export default function ClassSchedule() {
                   <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Day</th>
                   <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Subject</th>
                   <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Time</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Room</th>
                   <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Instructor</th>
                 </tr>
               </thead>
@@ -34,6 +35,7 @@ export default function ClassSchedule() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     3:00 PM - 9:00 PM
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">IL603a / IK503 f1</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Prof. Santos</td>
                 </tr>
                 <tr className="hover:bg-gray-50 dark:hover:bg-gray-800">
@@ -46,6 +48,7 @@ export default function ClassSchedule() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     2:00 PM - 8:00 PM
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">IL602a / IK604 f1</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     Prof. Soriano
                   </td>
@@ -69,6 +72,7 @@ export default function ClassSchedule() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     7:00 AM - 10:00 AM / 11:00 AM - 2:00 PM
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">IL504a</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     Prof. Randy / Prof. Palmiano
                   </td>
@@ -81,6 +85,7 @@ export default function ClassSchedule() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     11:00 AM - 1:00 PM / 2:00PM - 8:00PM
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">SB OG/ IL601a / IK504 f1</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     Prof. Denver/ Prof. Tanjente
                   </td>
@@ -93,8 +98,9 @@ export default function ClassSchedule() {
                     Software Engineering
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                    (Time to be determined)
+                    2:00 PM - 8:00 PM
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">TBA / IL502a</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Prof. Distor</td>
                 </tr>
               </tbody>

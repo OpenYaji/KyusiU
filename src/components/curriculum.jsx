@@ -90,31 +90,31 @@ export default function Curriculum() {
           <p className="text-xl mt-2">Bachelor of Science in Information Technology</p>
         </CardContent>
       </Card>
+        <div className="mb-6 flex flex-wrap gap-4">
+          <Select value={selectedYear} onValueChange={setSelectedYear}>
+            <SelectTrigger className="w-[120px]">
+              <SelectValue placeholder="Year" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1st">1st</SelectItem>
+              <SelectItem value="2nd">2nd</SelectItem>
+              <SelectItem value="3rd">3rd</SelectItem>
+              <SelectItem value="4th">4th</SelectItem>
+            </SelectContent>
+          </Select>
+          <span className="self-center" style={{ fontSize: '1.2em' }} >Year</span>
 
-      <div className="mb-6 flex flex-wrap gap-4">
-        <Select value={selectedYear} onValueChange={setSelectedYear}>
-          <SelectTrigger className="w-[120px]">
-            <SelectValue placeholder="Year" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="1st">1st Year</SelectItem>
-            <SelectItem value="2nd">2nd Year</SelectItem>
-            <SelectItem value="3rd">3rd Year</SelectItem>
-            <SelectItem value="4th">4th Year</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Select value={selectedSem} onValueChange={setSelectedSem}>
-          <SelectTrigger className="w-[150px]">
-            <SelectValue placeholder="Semester" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="1st">1st Semester</SelectItem>
-            <SelectItem value="2nd">2nd Semester</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
+          <Select value={selectedSem} onValueChange={setSelectedSem}>
+            <SelectTrigger className="w-[150px]">
+              <SelectValue placeholder="Semester" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1st">1st</SelectItem>
+              <SelectItem value="2nd">2nd</SelectItem>
+            </SelectContent>
+          </Select>
+          <span className="self-center" style={{ fontSize: '1.2em' }} >Semester</span>
+        </div>
       <Card>
         <CardContent className="p-0 overflow-auto">
           <div className="min-w-full">

@@ -12,6 +12,7 @@ import Clearance from "@/components/clearance"
 import ClassSchedule from "@/components/class-schedule"
 import Settings from "@/components/settings"
 import Support from "@/components/support"
+import LoginPage from "@/components/login"
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("dashboard")
@@ -19,6 +20,8 @@ export default function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (darkMode) {
@@ -29,11 +32,21 @@ export default function App() {
   }, [darkMode])
 
   useEffect(() => {
+    // Check authentication status from localStorage
+    const checkAuth = () => {
+      const authStatus = localStorage.getItem("qcu_authenticated")
+      if (authStatus === "true") {
+        setIsAuthenticated(true)
+      }
+      setIsLoading(false)
+    }
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
 
-    // Initial check
+    // Initial checks
+    checkAuth()
     checkMobile()
 
     // Add resize listener
@@ -68,11 +81,42 @@ export default function App() {
     setDarkMode(!darkMode)
   }
 
+  const handleLogin = () => {
+    setIsAuthenticated(true)
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    localStorage.removeItem("qcu_authenticated")
+    localStorage.removeItem("qcu_student_id")
+    setActiveSection("dashboard")
+  }
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-blue-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-white"></div>
+      </div>
+    )
+  }
+
+  // Show login page if not authenticated
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={handleLogin} darkMode={darkMode} />
+  }
+
+  // Show main app if authenticated
   return (
     <div
       className={`min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 ${sidebarCollapsed ? "sidebar-collapsed" : ""}`}
     >
-      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} toggleSidebar={toggleSidebar} />
+      <Header 
+        toggleDarkMode={toggleDarkMode} 
+        darkMode={darkMode} 
+        toggleSidebar={toggleSidebar} 
+        onLogout={handleLogout}
+      />
       <Sidebar
         activeSection={activeSection}
         setActiveSection={handleSectionChange}
