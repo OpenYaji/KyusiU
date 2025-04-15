@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import Logo from "/src/assets/about.png";
+import BG from"/src/assets/qcu.mp4"
 
 export default function LoginPage({ onLogin, darkMode }) {
   const [studentId, setStudentId] = useState("")
@@ -67,16 +68,25 @@ export default function LoginPage({ onLogin, darkMode }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-blue-900 to-blue-700">
-      {/* Rest of your component remains the same */}
-      <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto">
+    <div className="flex min-h-screen relative overflow-hidden">
+    {/* Video Background */}
+    <div className="absolute inset-0 w-full h-full z-0">
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        {/* Replace this with your actual video source when available */}
+        <source src={BG} type="video/mp4" />
+      </video>
+      {/* Blue overlay/mask on top of video */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 to-blue-700/80 z-10"></div>
+    </div>
+    {/* Content container with z-index to appear above the video */}
+    <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto relative z-20">
         {/* Left side with logo and university info */}
         <div className="flex-1 p-8 flex flex-col items-center justify-center text-white text-center md:text-left animate-fadeIn">
           <div className="mb-8 animate-float">
             <img 
               src={Logo} // Update with your actual logo path
               alt="QCU Logo" 
-              className="w-32 h-32 mx-auto md:mx-0"
+              className="w-350 h-350 mx-auto md:mx-0"
             />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Quezon City University</h1>
